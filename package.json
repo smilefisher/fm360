@@ -1,0 +1,36 @@
+{
+  "name": "fm360",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "fm360 — listen somewhere new. A world radio atlas on Cloudflare.",
+  "packageManager": "pnpm@11.15.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "deploy": "pnpm build && wrangler deploy",
+    "seed": "node scripts/seed.mjs",
+    "map": "node scripts/build-map-texture.mjs"
+  },
+  "dependencies": {
+    "hls.js": "^1.7.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "topojson-client": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/topojson-client": "^3.1.5",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "^7.0.2",
+    "tz-lookup": "^6.1.25",
+    "vite": "^8.3.5",
+    "world-countries": "^5.1.0",
+    "wrangler": "^4.151.3"
+  }
+}

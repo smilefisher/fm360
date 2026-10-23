@@ -1,0 +1,18 @@
+{
+  "name": "fm360",
+  "short_name": "fm360",
+  "description": "随机收听世界各地的电台直播。",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#050b14",
+  "theme_color": "#050b14",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

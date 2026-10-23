@@ -1,0 +1,7 @@
+node_modules
+dist
+.wrangler
+.DS_Store
+*.local
+scripts/assets/world-map.svg
+scripts/assets/world-map.html

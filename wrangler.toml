@@ -1,0 +1,26 @@
+# fm360 — Cloudflare Worker + Static Assets
+#
+# 线上只依赖 Cloudflare 免费额度：
+#   - 静态资源免费、无限请求
+#   - Worker 只处理 /api/*（后续还有 /station/*、/c/*、/sitemap.xml）
+#   - Cron 数据管线在 worker/index.ts 的 scheduled() 里（M1 接入）
+#
+# 自定义域名：toolora.stream 已在 Cloudflare。若 zone 与 Worker 不在同一账号，
+# 请在 Dashboard → Workers & Pages → fm360 → Settings → Domains & Routes 里添加。
+name = "fm360"
+compatibility_date = "2026-10-21"
+main = "worker/index.ts"
+
+# 避免同一份内容出现在 workers.dev / preview URL 上被搜索引擎收录。
+workers_dev = false
+preview_urls = false
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "404-page"
+run_worker_first = ["/api/*"]
+
+routes = [
+  { pattern = "fm360.toolora.stream", custom_domain = true }
+]
