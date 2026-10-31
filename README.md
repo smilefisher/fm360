@@ -65,6 +65,19 @@ pnpm build
 
 > 如果 `pnpm` 仍然卡在 “Verifying lockfile against supply-chain policies”，项目里的 `.npmrc` 已设置 `verify-deps-before-run=false`；也可以直接用 `./node_modules/.bin/vite`。
 
+## 自动部署（GitHub Actions）
+
+`.github/workflows/deploy.yml` 会在 push `main` 时执行 `pnpm build` + `wrangler deploy`，部署到 Cloudflare Worker `fm360`。
+
+在 GitHub 仓库 **Settings → Secrets and variables → Actions** 添加两个 Repository secret：
+
+- `CLOUDFLARE_API_TOKEN`：Cloudflare **My Profile → API Tokens → Create Token**，使用 **Edit Cloudflare Workers** 模板；再给 `toolora.stream` 加上 **Zone · DNS · Edit**（绑定 custom domain 需要）。
+- `CLOUDFLARE_ACCOUNT_ID`：Cloudflare Dashboard 右侧的 Account ID。
+
+添加后重新运行 `Deploy fm360 to Cloudflare` workflow，或再 push 一次。没有 secrets 时 workflow 会失败并提示缺少哪两个变量；这是预期的。
+
+另一种方式是在 Cloudflare Dashboard → Workers & Pages → `fm360` → Settings → Builds & deployments → Connect to Git，连上这个仓库，之后 push 也会自动构建；两种方式选一种即可。
+
 ## 目录
 
 ```
