@@ -6,10 +6,12 @@ import {
   useState,
   type ReactNode,
 } from 'react';
+import { applySeo } from '../seo';
 
 export type Lang = 'zh' | 'en';
 
 const en = {
+  pageTitle: 'fm360 — Listen somewhere new',
   tagline: 'Listen somewhere new.',
   sub: 'Press play. Leave the destination to chance.',
   introTitle: 'Listen\nsomewhere new.',
@@ -99,6 +101,7 @@ const en = {
 type Dict = typeof en;
 
 const zh: Dict = {
+  pageTitle: 'fm360 — 随机一站，听见世界',
   tagline: '随机一站，听见世界。',
   sub: '按下播放，目的地交给运气。',
   introTitle: '随机一站，\n听见世界。',
@@ -189,6 +192,9 @@ const DICTS: Record<Lang, Dict> = { en, zh };
 
 function detectLang(): Lang {
   try {
+    const forced = (window as unknown as { __FM360_LANG__?: unknown }).__FM360_LANG__;
+    if (forced === 'zh' || forced === 'en') return forced;
+    if (location.pathname === '/en' || location.pathname.startsWith('/en/')) return 'en';
     const fromUrl = new URLSearchParams(location.search).get('lang');
     if (fromUrl === 'zh' || fromUrl === 'en') return fromUrl;
     const stored = localStorage.getItem('fm360.lang');
@@ -211,7 +217,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(detectLang);
 
   useEffect(() => {
-    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    applySeo(lang);
     try {
       localStorage.setItem('fm360.lang', lang);
     } catch {
@@ -223,7 +229,16 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     const dict = DICTS[lang];
     return {
       lang,
-      setLang: setLangState,
+      setLang: (next: Lang) => {
+        setLangState(next);
+        try {
+          const path = next === 'en' ? '/en/' : '/';
+          const url = `${path}${location.search}${location.hash}`;
+          if (location.pathname !== path) history.replaceState(null, '', url);
+        } catch {
+          // ignore
+        }
+      },
       t: (key, vars) => {
         let text: string = dict[key] ?? en[key] ?? String(key);
         if (vars) {

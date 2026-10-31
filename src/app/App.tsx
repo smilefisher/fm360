@@ -179,10 +179,8 @@ export function App() {
   });
 
   useEffect(() => {
-    document.title = player.station
-      ? `${player.station.name} · fm360`
-      : 'fm360 — 随机一站，听见世界';
-  }, [player.station]);
+    document.title = player.station ? `${player.station.name} · fm360` : t('pageTitle');
+  }, [player.station, t]);
 
   useEffect(() => {
     (window as unknown as { __fm360?: unknown }).__fm360 = {

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fm360.toolora.stream/sitemap.xml

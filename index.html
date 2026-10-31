@@ -8,19 +8,158 @@
     <title>fm360 — 随机一站，听见世界</title>
     <meta
       name="description"
-      content="fm360 让你随机收听世界各地的电台直播。按晨昏线、流派和地区漫游，按下播放，目的地交给运气。"
+      content="fm360 是一个世界电台地图。按晨昏线、流派、国家和地区漫游，随机收听世界各地的电台直播。无需账号，无广告。"
     />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://fm360.toolora.stream/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://fm360.toolora.stream/" />
+    <link rel="alternate" hreflang="en" href="https://fm360.toolora.stream/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://fm360.toolora.stream/" />
+
     <meta property="og:title" content="fm360 — 随机一站，听见世界" />
     <meta
       property="og:description"
-      content="随机收听世界各地的电台直播。按晨昏线、流派和地区漫游，按下播放，目的地交给运气。"
+      content="按晨昏线、流派、国家和地区漫游，随机收听世界各地的电台直播。按下播放，目的地交给运气。"
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://fm360.toolora.stream/" />
     <meta property="og:site_name" content="fm360" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:image" content="https://fm360.toolora.stream/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="fm360 — 世界电台地图，随机一站，听见世界" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="fm360 — 随机一站，听见世界" />
+    <meta
+      name="twitter:description"
+      content="按晨昏线、流派、国家和地区漫游，随机收听世界各地的电台直播。"
+    />
+    <meta name="twitter:image" content="https://fm360.toolora.stream/og.png" />
+    <meta name="twitter:image:alt" content="fm360 — 世界电台地图" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "fm360",
+        "alternateName": "fm360 世界电台",
+        "url": "https://fm360.toolora.stream/",
+        "description": "fm360 是一个世界电台地图。按晨昏线、流派、国家和地区漫游，随机收听世界各地的电台直播。",
+        "inLanguage": "zh-CN",
+        "publisher": {
+          "@type": "Organization",
+          "name": "fm360",
+          "url": "https://fm360.toolora.stream/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://fm360.toolora.stream/icon-512.png",
+            "width": 512,
+            "height": 512
+          }
+        }
+      }
+    </script>
+
     <style>
       html { background: #050b14; }
+      html, body { margin: 0; }
+      #seo-shell {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 18px;
+        padding: clamp(28px, 7vw, 110px);
+        padding-top: calc(clamp(28px, 7vw, 110px) + env(safe-area-inset-top));
+        overflow: auto;
+        color: #f4efe6;
+        background:
+          radial-gradient(80% 60% at 50% 115%, rgba(110, 231, 183, 0.1), transparent 60%),
+          radial-gradient(60% 50% at 14% 8%, rgba(245, 181, 68, 0.06), transparent 65%),
+          #050b14;
+      }
+      #seo-shell::after {
+        content: '';
+        position: absolute;
+        right: -8vw;
+        top: 50%;
+        width: min(58vw, 620px);
+        aspect-ratio: 1;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        border: 1px solid rgba(244, 239, 230, 0.14);
+        background:
+          radial-gradient(circle at 38% 34%, rgba(110, 231, 183, 0.18), rgba(6, 24, 32, 0.5) 55%, rgba(3, 8, 14, 0.9) 76%);
+        box-shadow: 0 0 120px rgba(110, 231, 183, 0.08);
+      }
+      .shell-brand {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        font: 650 20px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+        letter-spacing: -0.03em;
+      }
+      .shell-brand svg { width: 28px; height: 28px; }
+      .shell-kicker {
+        position: relative;
+        z-index: 1;
+        font: 9px/1.5 'SFMono-Regular', Menlo, monospace;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #94a8b4;
+      }
+      #seo-shell h1 {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+        margin: 0;
+        font-family: 'Songti SC', 'Iowan Old Style', Georgia, serif;
+        font-size: clamp(42px, 7vw, 82px);
+        font-weight: 400;
+        line-height: 0.98;
+        letter-spacing: -0.035em;
+      }
+      #seo-shell h1 span { color: #f5b544; font-style: italic; }
+      .shell-lede {
+        position: relative;
+        z-index: 1;
+        max-width: 520px;
+        margin: 0;
+        color: #94a8b4;
+        font: 15px/1.7 -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+      }
+      .shell-lede strong { color: #f4efe6; font-weight: 500; }
+      .shell-links {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font: 11px 'SFMono-Regular', Menlo, monospace;
+        color: #94a8b4;
+      }
+      .shell-links a {
+        color: #f4efe6;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(244, 239, 230, 0.25);
+        padding-bottom: 2px;
+      }
+      .shell-links a[aria-current='page'] { color: #f5b544; border-color: rgba(245, 181, 68, 0.4); }
+      .shell-note {
+        position: relative;
+        z-index: 1;
+        max-width: 520px;
+        margin: 0;
+        font: 9px/1.6 'SFMono-Regular', Menlo, monospace;
+        color: #94a8b4;
+        opacity: 0.6;
+      }
       .sr-only {
         position: absolute;
         width: 1px;
@@ -32,21 +171,61 @@
         white-space: nowrap;
         border: 0;
       }
+      @media (max-width: 700px) {
+        #seo-shell {
+          justify-content: flex-end;
+          padding: 26px 20px calc(38px + env(safe-area-inset-bottom));
+        }
+        #seo-shell::after {
+          width: 72vw;
+          right: 50%;
+          top: 31%;
+          transform: translate(50%, -50%);
+          opacity: 0.55;
+        }
+        .shell-brand { position: absolute; top: calc(20px + env(safe-area-inset-top)); left: 20px; }
+        #seo-shell h1 { font-size: clamp(38px, 12vw, 56px); }
+      }
     </style>
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="fm360" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   </head>
   <body>
-    <h1 class="sr-only">fm360 — 世界电台，随机一站</h1>
+    <main id="seo-shell" lang="zh-CN">
+      <div class="shell-brand">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="18" fill="none" stroke="currentColor" stroke-width="2.5" />
+          <path d="M32 14v5M32 45v5M14 32h5M45 32h5" stroke="#6ee7b7" stroke-width="2" stroke-linecap="round" />
+          <path d="M32 32 42 22" stroke="#f5b544" stroke-width="3.5" stroke-linecap="round" />
+          <circle cx="32" cy="32" r="2.8" fill="#f5b544" />
+          <circle cx="48" cy="16" r="3.2" fill="#f36b45" />
+        </svg>
+        fm360
+      </div>
+      <div class="shell-kicker">FM360 · 世界电台地图</div>
+      <h1>随机一站，<br /><span>听见世界。</span></h1>
+      <p class="shell-lede">
+        <strong>fm360</strong> 是一个世界电台地图。按晨昏线、流派、国家和地区漫游，随机收听世界各地的电台直播。按下播放，目的地交给运气。
+      </p>
+      <p class="shell-lede" lang="en">
+        <strong>Listen somewhere new.</strong> A world radio atlas — roam by day/night, genre, country and language, then press play.
+      </p>
+      <div class="shell-links">
+        <a href="/" aria-current="page" hreflang="zh-CN" lang="zh-CN">中文</a>
+        <span aria-hidden="true">·</span>
+        <a href="/en/" hreflang="en" lang="en">English</a>
+      </div>
+      <p class="shell-note">无需账号，无广告。声音直接来自各电台自己的服务器。目录来自 Radio Browser。</p>
+      <noscript><p class="shell-note">fm360 需要 JavaScript 才能播放直播。</p></noscript>
+    </main>
     <div id="root"></div>
-    <noscript>
-      <p>fm360 需要 JavaScript 才能播放世界各地的电台直播。</p>
-    </noscript>
+    <script>window.__FM360_LANG__ = 'zh';</script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

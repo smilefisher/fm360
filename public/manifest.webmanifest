@@ -1,7 +1,7 @@
 {
   "name": "fm360",
   "short_name": "fm360",
-  "description": "随机收听世界各地的电台直播。",
+  "description": "Random live radio from around the world.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -9,10 +9,28 @@
   "theme_color": "#050b14",
   "icons": [
     {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
